@@ -9,3 +9,8 @@ body {
   text-align: center;
   background-color: #F0FFFF; 
 }
+h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
