@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import './App.css';
 
 const FilterComponent = () => {
-    // State for managing data and search text
+    
     const [data, setData] = useState([]);
     const [searchText, setSearchText] = useState("");
-    const [filteredData, setFilteredData] = useState([]);
 
-    // Simulate data fetching with useEffect
+    
     useEffect(() => {
         setTimeout(() => {
             setData([
@@ -17,13 +17,10 @@ const FilterComponent = () => {
         }, 1000);
     }, []);
 
-    // Effect for filtering data based on search text
-    useEffect(() => {
-        const filtered = data.filter((item) =>
-            item.toLowerCase().includes(searchText.toLowerCase())
-        );
-        setFilteredData(filtered);
-    }, [searchText, data]);
+  
+    const filteredData = data.filter((item) =>
+        item.toLowerCase().includes(searchText.toLowerCase().trim())
+    );
 
     return (
         <div>
@@ -35,13 +32,9 @@ const FilterComponent = () => {
                 onChange={(e) => setSearchText(e.target.value)}
             />
             <ul>
-                {filteredData.length > 0 ? (
-                    filteredData.map((item, index) => (
-                        <li key={index}>{item}</li>
-                    ))
-                ) : (
-                    <li>No results found</li>
-                )}
+                {filteredData.map((item, index) => (
+                    <li key={index}>{item}</li>
+                ))}
             </ul>
         </div>
     );
